@@ -1,0 +1,77 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4" style="font-style:italic">Welcome!</h1>
+    <p>5x5 Tic Tac Toe Game <br>
+       <a href="./Players" > GO TO OUR PLAYERS </a> <br>
+       <a href="./Games" > GO TO OUR GAMES </a>
+    </p>
+</div>
+
+<div class="container"; style="background-color: #FFFF">
+    <h1>Sign Up</h1>
+    <p>Please fill in this form to create an account.</p>
+    <form action="" method="post">
+        <table style="border-collapse:separate">
+            <tr>
+                 <td><label asp-for="player.FirstName"> </label></td>
+                 <td> @Html.TextBoxFor(m => m.player.FirstName, new { placeholder = "Enter First name"}) </td>
+            </tr>
+            <tr>
+                 <td></td>
+                 <td> <span asp-validation-for="player.FirstName" class="text-danger"> </span> </td>
+            </tr>
+
+            <tr>
+                 <td><label asp-for="player.LastName"> </label></td>
+                 <td> @Html.TextBoxFor(m => m.player.LastName, new { placeholder = "Enter Last name"}) </td>
+            </tr>
+            <tr>
+                 <td></td>
+                 <td> <span asp-validation-for="player.LastName" class="text-danger"> </span> </td>
+            </tr>
+
+            <tr>
+                 <td><label asp-for="player.Id"> </label></td>
+                 <td> @Html.TextBoxFor(m => m.player.Id, new { placeholder = "Enter Id"}) </td>
+            </tr>
+            <tr>
+                 <td></td>
+                 <td> <span asp-validation-for="player.Id" class="text-danger"> </span> </td>
+            </tr>
+
+            <tr>
+                 <td><label asp-for="player.Age"> </label></td>
+                 <td> @Html.TextBoxFor(m => m.player.Age, new { placeholder = "Enter your age"}) </td>
+            </tr>
+            <tr>
+                 <td></td>
+                 <td> <span asp-validation-for="player.Age" class="text-danger"> </span> </td>
+            </tr>
+            
+            <tr>
+                 <td><label asp-for="player.Password"> </label></td>
+                 <td> @Html.TextBoxFor(m => m.player.Password, new { placeholder = "Enter password", type = "password"}) </td>
+            </tr>
+            <tr>
+                 <td></td>
+                 <td> <span asp-validation-for="player.Password" class="text-danger"> </span> </td>
+            </tr>
+            
+            <tr>
+                <td> Select city: </td>
+                <td><select id="cities" name="Player.City">
+                    <option value="TelAviv">Tel Aviv</option>
+                    <option value="London">London</option>
+                    <option value="Eilat">Eilat</option>
+                    <option value="Pariz">Pariz</option>
+                    </select> </td>
+            </tr>
+        </table>
+        <input type="submit" value="Sign Up"> <br> <br>      
+    </form>
+</div>

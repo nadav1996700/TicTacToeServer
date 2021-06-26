@@ -1,0 +1,59 @@
+﻿@page
+@model TicTacToeServer.Pages.Games.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>ViewData["Title"]</h1>
+
+<h4>TblGames</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TblGames.PlayerId" class="control-label"></label>
+                <input asp-for="TblGames.PlayerId" class="form-control" />
+                <span asp-validation-for="TblGames.PlayerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TblGames.Date" class="control-label"></label>
+                <input asp-for="TblGames.Date" class="form-control" />
+                <span asp-validation-for="TblGames.Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TblGames.Winner" class="control-label"></label>
+                <input asp-for="TblGames.Winner" class="form-control" />
+                <span asp-validation-for="TblGames.Winner" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TblGames.PlayerShape" class="control-label"></label>
+                <input asp-for="TblGames.PlayerShape" class="form-control" />
+                <span asp-validation-for="TblGames.PlayerShape" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TblGames.ServerShape" class="control-label"></label>
+                <input asp-for="TblGames.ServerShape" class="form-control" />
+                <span asp-validation-for="TblGames.ServerShape" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TblGames.NumberOfMoves" class="control-label"></label>
+                <input asp-for="TblGames.NumberOfMoves" class="form-control" />
+                <span asp-validation-for="TblGames.NumberOfMoves" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
