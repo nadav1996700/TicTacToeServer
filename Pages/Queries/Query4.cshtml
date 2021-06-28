@@ -1,0 +1,46 @@
+﻿@page
+@model Query4Model
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Display for each player - how many games did he played</h1> <br>
+<h5> <a href="./Queries">go back</a> </h5> <br>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TblPlayers[0].Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TblPlayers[0].FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TblPlayers[0].LastName)
+            </th>
+            <th>
+                Number of games
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@for (int i = 0; i < Model.TblPlayers.Count; i++) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.TblPlayers[i].Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.TblPlayers[i].FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.TblPlayers[i].LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.CountList[i])
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using TicTacToeServer.Data;
 using TicTacToeServer.Models;
 
-namespace TicTacToeServer.Pages.Players
+namespace TicTacToeServer.Pages.Queries
 {
     public class QueriesModel : PageModel
     {

@@ -10,20 +10,20 @@ using TicTacToeServer.Models;
 
 namespace TicTacToeServer.Pages.Queries
 {
-    public class Query1Model : PageModel
+    public class Query2Model : PageModel
     {
         private readonly MyContext _context;
 
-        public Query1Model(MyContext context)
+        public Query2Model(MyContext context)
         {
             _context = context;
         }
 
-        public IList<TblPlayers> TblPlayers { get;set; }
+        public IList<TblGames> TblGames { get;set; }
 
         public async Task OnGetAsync()
         {
-            TblPlayers = await _context.TblPlayers.ToListAsync();
+            TblGames = await _context.TblGames.ToListAsync();
         }
     }
 }

@@ -9,6 +9,7 @@ namespace TicTacToeServer.Models
     public class TblGames
     {
         [Required(ErrorMessage = "game id is required")]
+        [Display(Name = "Game Id")]
         public int Id { get; set; }
 
         [Required(ErrorMessage = "player id is missing")]

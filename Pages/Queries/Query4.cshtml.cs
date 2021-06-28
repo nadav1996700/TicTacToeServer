@@ -10,20 +10,31 @@ using TicTacToeServer.Models;
 
 namespace TicTacToeServer.Pages.Queries
 {
-    public class Query1Model : PageModel
+    public class Query4Model : PageModel
     {
         private readonly MyContext _context;
 
-        public Query1Model(MyContext context)
+        public Query4Model(MyContext context)
         {
             _context = context;
         }
 
-        public IList<TblPlayers> TblPlayers { get;set; }
+        public IList<TblPlayers> TblPlayers { get; set; }
+
+        public IList<TblGames> TblGames { get; set; }
+
+        public List<int> CountList { get; set; }
 
         public async Task OnGetAsync()
         {
+            TblGames = await _context.TblGames.ToListAsync();
             TblPlayers = await _context.TblPlayers.ToListAsync();
+            CountList = new List<int>();
+            foreach(var player in TblPlayers)
+            {
+                int games = TblGames.Where(g => g.PlayerId == player.Id).Count();
+                CountList.Add(games);
+            }
         }
     }
 }
