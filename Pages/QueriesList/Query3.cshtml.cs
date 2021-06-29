@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using TicTacToeServer.Data;
 using TicTacToeServer.Models;
 
-namespace TicTacToeServer.Pages.Queries
+namespace TicTacToeServer.Pages.QueriesList
 {
     public class Query3Model : PageModel
     {
@@ -24,8 +24,14 @@ namespace TicTacToeServer.Pages.Queries
         public async Task OnPostAsync(string playerDetails)
         {
             string[] str = playerDetails.Split(" ");
-            int id = Convert.ToInt32(str[3]);
-            TblGames = await _context.TblGames.Where(g => g.PlayerId == id).ToListAsync();
+            try {
+                int id = Convert.ToInt32(str[3]);
+                TblGames = await _context.TblGames.Where(g => g.PlayerId == id).ToListAsync();
+            }
+            catch
+            {
+                TblGames = new List<TblGames>();
+            }
         }
     }
 }

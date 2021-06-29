@@ -1,0 +1,83 @@
+﻿@page
+@model TicTacToeServer.Pages.QueriesList.Query5Model
+@{
+}
+
+<h1>Players sorted by number of games</h1> <br>
+<h5> <a href="./Queries">go back</a> </h5> <br>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th> Number of games </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TblPlayers[0].Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TblPlayers[0].FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TblPlayers[0].LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TblPlayers[0].Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TblPlayers[0].City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TblPlayers[0].Password)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Groups) {
+        <tr>
+            <td> @item.Key </td>
+            <td>
+                 @Html.DisplayFor(modelItem => @item.Value[0].Id)
+            </td>
+            <td>
+                 @Html.DisplayFor(modelItem => @item.Value[0].FirstName)
+            </td>
+            <td>
+                 @Html.DisplayFor(modelItem => @item.Value[0].LastName)
+            </td>
+            <td>
+                 @Html.DisplayFor(modelItem => @item.Value[0].Age)
+            </td>
+            <td>
+                 @Html.DisplayFor(modelItem => @item.Value[0].City)
+            </td>
+            <td>
+                 @Html.DisplayFor(modelItem => @item.Value[0].Password)
+            </td>
+
+            @for(int i = 1;  i < @item.Value.Count; i++)
+             {
+               <tr> 
+                   <td> </td>
+                   <td>
+                       @Html.DisplayFor(modelItem => @item.Value[i].Id)
+                   </td>
+                   <td>
+                       @Html.DisplayFor(modelItem => @item.Value[i].FirstName)
+                   </td>
+                   <td>
+                       @Html.DisplayFor(modelItem => @item.Value[i].LastName)
+                   </td>
+                   <td>
+                       @Html.DisplayFor(modelItem => @item.Value[i].Age)
+                   </td>
+                   <td>
+                       @Html.DisplayFor(modelItem => @item.Value[i].City)
+                   </td>
+                   <td>
+                       @Html.DisplayFor(modelItem => @item.Value[i].Password)
+                   </td>
+             </tr>
+            }
+        </tr>
+}
+    </tbody>
+</table>

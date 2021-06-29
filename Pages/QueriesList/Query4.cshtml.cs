@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using TicTacToeServer.Data;
 using TicTacToeServer.Models;
 
-namespace TicTacToeServer.Pages.Queries
+namespace TicTacToeServer.Pages.QueriesList
 {
     public class Query4Model : PageModel
     {
