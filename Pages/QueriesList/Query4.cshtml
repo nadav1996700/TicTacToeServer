@@ -12,9 +12,6 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.TblPlayers[0].Id)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.TblPlayers[0].FirstName)
             </th>
             <th>
@@ -28,9 +25,6 @@
     <tbody>
 @for (int i = 0; i < Model.TblPlayers.Count; i++) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => modelItem.TblPlayers[i].Id)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => modelItem.TblPlayers[i].FirstName)
             </td>

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using TicTacToeServer.Data;
-using TicTacToeServer.Models;
+using TicTacToeServer.Model;
 
 namespace TicTacToeServer.Pages.QueriesList
 {

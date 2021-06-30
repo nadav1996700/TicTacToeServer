@@ -8,31 +8,31 @@
 <h1>Queries List</h1> <br> <br>
 
 <form action="" method="post">
-<table class="table">
-    <tr>
-        <td><a href="./Query1"> Watch all the players details </a> </td>
-    </tr>
-    <tr>
-        <td><a href="./Query2"> Watch all the games details </a> </td>
-    </tr>
-    <tr>
-        <td> <select class="form-control" name="playerDetails">
-                <option>Select player to show his games</option> 
-                @foreach(var player in Model.TblPlayers)
-                {
-                    <option>FirstName: @player.FirstName Id: @player.Id</option>
-                }
-             </select>
-        </td>
-        <td>
-            <button asp-page="./Query3">show</button>
-        </td>
-    </tr>
-    <tr>
-        <td><a href="./Query4">display for each player - how many games did he played </a> </td>
-    </tr>
-    <tr>
-        <td><a href="./Query5">display players ordered by number of games descending </a> </td>
-    </tr>
-</table>
+    <table class="table">
+        <tr>
+            <td><a href="./Query1"> Watch all the players details </a> </td>
+        </tr>
+        <tr>
+            <td><a href="./Query2"> Watch all the games details </a> </td>
+        </tr>
+        <tr>
+            <td> <select class="form-control" name="playerDetails">
+                    <option>Select player to show his games</option> 
+                    @foreach(var player in Model.TblPlayers)
+                    {
+                        <option>FirstName: @player.FirstName Id: @player.Id</option>
+                    }
+                 </select>
+            </td>
+            <td>
+                <button asp-page="./Query3">show</button>
+            </td>
+        </tr>
+        <tr>
+            <td><a href="./Query4">display for each player - how many games did he played </a> </td>
+        </tr>
+        <tr>
+            <td><a href="./Query5">display players ordered by number of games descending </a> </td>
+        </tr>
+    </table>
 </form>
