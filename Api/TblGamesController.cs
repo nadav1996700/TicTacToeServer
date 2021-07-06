@@ -44,16 +44,18 @@ namespace TicTacToeServer.Api
 
         // GET: api/TblGames/matrix
         [HttpGet("{matrix}")]
-        public Task<int> GetNextMove(int[,] matrix)
+        public Task<Move> GetNextMove(int[,] matrix)
         {
-            const int size = 5;
-            List<int> avilable_cells = new List<int>();
-            for (int i = 0; i < matrix.Length; i++)
+            List<Move> avilable_cells = new List<Move>();
+            for (int i = 0; i < matrix.GetLength(0); i++)
             {
-                for (int j = 0; j < matrix.Length; j++)
+                for (int j = 0; j < matrix.GetLength(0); j++)
                 {
-                    if (matrix[i, j] == 0) // empty cell
-                        avilable_cells.Add(size * (i - 1) + (j - 1));
+                    if (matrix[i, j] == 0) // empty cell 
+                    {
+                        Move move = new Move { Row = i, Column = j };
+                        avilable_cells.Add(move);
+                    }
                 }
             }
             // select random cell from list and return his value

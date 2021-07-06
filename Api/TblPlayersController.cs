@@ -21,13 +21,6 @@ namespace TicTacToeServer.Api
             _context = context;
         }
 
-        // GET: api/TblPlayers
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<TblPlayers>>> GetTblPlayers()
-        {
-            return await _context.TblPlayers.ToListAsync();
-        }
-
         // GET: api/TblPlayers/5
         [HttpGet("{id}")]
         public async Task<ActionResult<TblPlayers>> GetTblPlayers(int id)
@@ -40,6 +33,25 @@ namespace TicTacToeServer.Api
             }
 
             return tblPlayers;
+        }
+
+        //api/TblPlayers/{name}/{password}
+        [HttpGet("{name}/{password}")]
+        public async Task<ActionResult<int>> GetPlayerId(string name, string password)
+        {
+            var tblPlayers = await _context.TblPlayers.ToListAsync();
+
+            if (tblPlayers == null)
+            {
+                return NotFound();
+            }
+
+            foreach(var player in tblPlayers)
+            {
+                if (player.FirstName.Trim() == name && player.Password.Trim() == password)
+                    return player.Id;
+            }
+            return NotFound();
         }
 
         // PUT: api/TblPlayers/5
