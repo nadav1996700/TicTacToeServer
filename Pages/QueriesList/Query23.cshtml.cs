@@ -10,11 +10,11 @@ using TicTacToeServer.Model;
 
 namespace TicTacToeServer.Pages.QueriesList
 {
-    public class Query2Model : PageModel
+    public class Query23Model : PageModel
     {
         private readonly MyContext _context;
 
-        public Query2Model(MyContext context)
+        public Query23Model(MyContext context)
         {
             _context = context;
         }
@@ -24,6 +24,20 @@ namespace TicTacToeServer.Pages.QueriesList
         public async Task OnGetAsync()
         {
             TblGames = await _context.TblGames.ToListAsync();
+        }
+
+        public async Task OnPostQueryThreeAsync(string playerDetails)
+        {
+            string[] str = playerDetails.Split(" ");
+            try
+            {
+                int id = Convert.ToInt32(str[3]);
+                TblGames = await _context.TblGames.Where(g => g.PlayerId == id).ToListAsync();
+            }
+            catch
+            {
+                TblGames = new List<TblGames>();
+            }
         }
     }
 }

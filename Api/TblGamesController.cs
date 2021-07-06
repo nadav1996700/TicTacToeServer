@@ -28,7 +28,7 @@ namespace TicTacToeServer.Api
             return await _context.TblGames.ToListAsync();
         }
 
-        // GET: api/TblGames/5
+        // GET: api/TblGames/id
         [HttpGet("{id}")]
         public async Task<ActionResult<TblGames>> GetTblGames(int id)
         {
@@ -40,6 +40,26 @@ namespace TicTacToeServer.Api
             }
 
             return tblGames;
+        }
+
+        // GET: api/TblGames/matrix
+        [HttpGet("{matrix}")]
+        public Task<int> GetNextMove(int[,] matrix)
+        {
+            const int size = 5;
+            List<int> avilable_cells = new List<int>();
+            for (int i = 0; i < matrix.Length; i++)
+            {
+                for (int j = 0; j < matrix.Length; j++)
+                {
+                    if (matrix[i, j] == 0) // empty cell
+                        avilable_cells.Add(size * (i - 1) + (j - 1));
+                }
+            }
+            // select random cell from list and return his value
+            Random rand = new Random();
+            int index = rand.Next(avilable_cells.Count);
+            return Task.FromResult(avilable_cells[index]);
         }
 
         // PUT: api/TblGames/5

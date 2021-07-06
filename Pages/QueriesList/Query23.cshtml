@@ -1,11 +1,11 @@
 ﻿@page
-@model Query3Model
+@model Query23Model
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Details of games that the chosen player played</h1> <br>
+<h1>Games Details</h1> <br>
 <h5> <a href="./Queries">go back</a> </h5> <br>
 
 <table class="table">
@@ -28,6 +28,12 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.TblGames[0].ServerShape)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TblGames[0].PlayerColor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TblGames[0].ServerColor)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.TblGames[0].NumberOfMoves)
@@ -55,6 +61,12 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ServerShape)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlayerColor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServerColor)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NumberOfMoves)

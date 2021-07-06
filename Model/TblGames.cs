@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -26,6 +27,8 @@ namespace TicTacToeServer.Model
 
         [Required(ErrorMessage = "server shape is missing")]
         public string ServerShape { get; set; }
+        public string PlayerColor { get; set; }
+        public string ServerColor { get; set; }
 
         [Required(ErrorMessage = "number of moves is missing")]
         [Range(5,25)]
