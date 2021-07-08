@@ -1,13 +1,13 @@
 ﻿@page
-@model TicTacToeServer.Pages.Players.EditModel
+@model TicTacToeServer.Pages.RegistrationModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Registration";
 }
 
-<h1>Edit</h1>
+<h1>Registration</h1>
 
-<h4>TblPlayers</h4>
+<h4>New Player</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -40,21 +40,21 @@
             </div>
             <div class="form-group">
                 <label asp-for="TblPlayers.Gender" class="control-label"></label> <br>
-                <select id="Player.Gender" name="TblPlayers.Gender">
+                <select id="gender" name="Player.Gender">
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                 </select>
                 <span asp-validation-for="TblPlayers.Gender" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="Index">Back to List</a>
 </div>
 
 @section Scripts {

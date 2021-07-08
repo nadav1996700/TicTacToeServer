@@ -14,7 +14,8 @@ namespace TicTacToeServer.Model
         public int Id { get; set; }
 
         [Required(ErrorMessage = "player id is missing")]
-        public int PlayerId { get; set; }
+        [StringLength(9, MinimumLength = 9, ErrorMessage = "player id must contain 9 digits")]
+        public string PlayerId { get; set; }
 
         [Required(ErrorMessage = "enter the date and time of the game")]
         public DateTime Date { get; set; }

@@ -32,7 +32,8 @@ namespace TicTacToeServer.Pages
                 // save to database
                 List<string> lst = new List<string> { player.FirstName, player.LastName, 
                     Convert.ToString(player.Id), Convert.ToString(player.Age), 
-                    player.City, player.Password };
+                    player.Gender, player.Password };
+                
                 Response.WriteAsync("<p>" + string.Join("<br>", lst) + "</p>");
             }
         }

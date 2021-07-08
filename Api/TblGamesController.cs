@@ -43,15 +43,15 @@ namespace TicTacToeServer.Api
         }
 
         // GET: api/TblGames/matrix
-        [HttpGet("{matrix}")]
-        public Task<Move> GetNextMove(int[,] matrix)
+        [HttpGet("{matrix_data}")]
+        public Task<Move> GetNextMove(int[,] matrix_data)
         {
             List<Move> avilable_cells = new List<Move>();
-            for (int i = 0; i < matrix.GetLength(0); i++)
+            for (int i = 0; i < matrix_data.GetLength(0); i++)
             {
-                for (int j = 0; j < matrix.GetLength(0); j++)
+                for (int j = 0; j < matrix_data.GetLength(0); j++)
                 {
-                    if (matrix[i, j] == 0) // empty cell 
+                    if (matrix_data[i, j] == 0) // empty cell 
                     {
                         Move move = new Move { Row = i, Column = j };
                         avilable_cells.Add(move);

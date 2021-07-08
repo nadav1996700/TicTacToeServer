@@ -31,7 +31,7 @@ namespace TicTacToeServer.Pages.QueriesList
             string[] str = playerDetails.Split(" ");
             try
             {
-                int id = Convert.ToInt32(str[3]);
+                string id = str[3];
                 TblGames = await _context.TblGames.Where(g => g.PlayerId == id).ToListAsync();
             }
             catch

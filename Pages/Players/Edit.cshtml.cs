@@ -23,7 +23,7 @@ namespace TicTacToeServer.Pages.Players
         [BindProperty]
         public TblPlayers TblPlayers { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(string id)
         {
             if (id == null)
             {
@@ -39,8 +39,6 @@ namespace TicTacToeServer.Pages.Players
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -69,7 +67,7 @@ namespace TicTacToeServer.Pages.Players
             return RedirectToPage("./Index");
         }
 
-        private bool TblPlayersExists(int? id)
+        private bool TblPlayersExists(string id)
         {
             return _context.TblPlayers.Any(e => e.Id == id);
         }

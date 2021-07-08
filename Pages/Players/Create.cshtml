@@ -14,6 +14,11 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <label asp-for="TblPlayers.Id" class="control-label"></label>
+                <input asp-for="TblPlayers.Id" class="form-control" />
+                <span asp-validation-for="TblPlayers.Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="TblPlayers.FirstName" class="control-label"></label>
                 <input asp-for="TblPlayers.FirstName" class="form-control" />
                 <span asp-validation-for="TblPlayers.FirstName" class="text-danger"></span>
@@ -29,14 +34,17 @@
                 <span asp-validation-for="TblPlayers.Age" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TblPlayers.City" class="control-label"></label>
-                <input asp-for="TblPlayers.City" class="form-control" />
-                <span asp-validation-for="TblPlayers.City" class="text-danger"></span>
+                <label asp-for="TblPlayers.Password" class="control-label"></label>
+                <input type="password" asp-for="TblPlayers.Password" class="form-control" />
+                <span asp-validation-for="TblPlayers.Password" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TblPlayers.Password" class="control-label"></label>
-                <input asp-for="TblPlayers.Password" class="form-control" />
-                <span asp-validation-for="TblPlayers.Password" class="text-danger"></span>
+                <label asp-for="TblPlayers.Gender" class="control-label"></label> <br>
+                <select id="gender" name="TblPlayers.Gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+                <span asp-validation-for="TblPlayers.Gender" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

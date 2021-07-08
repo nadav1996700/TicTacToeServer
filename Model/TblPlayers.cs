@@ -17,13 +17,15 @@ namespace TicTacToeServer.Model
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "Id must be entered")]
-        public int Id { get; set; }
+        [StringLength(9, MinimumLength = 9, ErrorMessage ="id must contain 9 digits")]
+        public string Id { get; set; }
 
         [Required(ErrorMessage = "please enter your age")]
         [Range(5,99, ErrorMessage = "Age must be between 5-99")]
         public int Age { get; set; }
 
-        public string City { get; set; }
+        [System.ComponentModel.DefaultValue("Male")]
+        public string Gender { get; set; }
 
         [Required(ErrorMessage = "Password must be entered")]
         [StringLength(30, MinimumLength = 4, ErrorMessage = "Password must contain at list 4 chracters")]
