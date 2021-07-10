@@ -49,14 +49,12 @@ namespace TicTacToeServer.Api
             foreach(var player in tblPlayers)
             {
                 if (player.Id.Trim() == id && player.Password.Trim() == password)
-                    return player.Id;
+                    return player.FirstName.Trim() + " " + player.LastName.Trim();
             }
             return NotFound();
         }
 
         // PUT: api/TblPlayers/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTblPlayers(string id, TblPlayers tblPlayers)
         {

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using TicTacToeServer.Data;
 using TicTacToeServer.Model;
 
@@ -28,77 +29,43 @@ namespace TicTacToeServer.Api
             return await _context.TblGames.ToListAsync();
         }
 
-        // GET: api/TblGames/id
-        [HttpGet("{id}")]
-        public async Task<ActionResult<TblGames>> GetTblGames(int id)
-        {
-            var tblGames = await _context.TblGames.FindAsync(id);
+        //// GET: api/TblGames/id
+        //[HttpGet("{id}")]
+        //public async Task<ActionResult<TblGames>> GetTblGames(int id)
+        //{
+        //    Console.WriteLine("1");
+        //    var tblGames = await _context.TblGames.FindAsync(id);
 
-            if (tblGames == null)
-            {
-                return NotFound();
-            }
+        //    if (tblGames == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return tblGames;
-        }
+        //    return tblGames;
+        //}
 
         // GET: api/TblGames/matrix
-        [HttpGet("{matrix_data}")]
-        public Task<Move> GetNextMove(int[,] matrix_data)
+        [HttpGet("{matrix}")]
+        public Move GetNextMove(string matrix)
         {
             List<Move> avilable_cells = new List<Move>();
-            for (int i = 0; i < matrix_data.GetLength(0); i++)
+            for (int i = 0; i < matrix.Length; i++)
             {
-                for (int j = 0; j < matrix_data.GetLength(0); j++)
+                if (matrix[i] == '0') // empty cell
                 {
-                    if (matrix_data[i, j] == 0) // empty cell 
-                    {
-                        Move move = new Move { Row = i, Column = j };
-                        avilable_cells.Add(move);
-                    }
+                    int row = i / 5, column = i % 5;
+                    Move move = new Move { Row = row, Column = column };
+                    avilable_cells.Add(move);
                 }
             }
+
             // select random cell from list and return his value
             Random rand = new Random();
             int index = rand.Next(avilable_cells.Count);
-            return Task.FromResult(avilable_cells[index]);
-        }
-
-        // PUT: api/TblGames/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutTblGames(int id, TblGames tblGames)
-        {
-            if (id != tblGames.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(tblGames).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!TblGamesExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return avilable_cells[index];
         }
 
         // POST: api/TblGames
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
         public async Task<ActionResult<TblGames>> PostTblGames(TblGames tblGames)
         {
@@ -106,27 +73,6 @@ namespace TicTacToeServer.Api
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetTblGames", new { id = tblGames.Id }, tblGames);
-        }
-
-        // DELETE: api/TblGames/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<TblGames>> DeleteTblGames(int id)
-        {
-            var tblGames = await _context.TblGames.FindAsync(id);
-            if (tblGames == null)
-            {
-                return NotFound();
-            }
-
-            _context.TblGames.Remove(tblGames);
-            await _context.SaveChangesAsync();
-
-            return tblGames;
-        }
-
-        private bool TblGamesExists(int id)
-        {
-            return _context.TblGames.Any(e => e.Id == id);
         }
     }
 }
