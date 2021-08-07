@@ -58,10 +58,10 @@ namespace TicTacToeServer.Api
                     avilable_cells.Add(move);
                 }
             }
-
             // select random cell from list and return his value
             Random rand = new Random();
             int index = rand.Next(avilable_cells.Count);
+            avilable_cells[index].PlayerOrServer = "Server";
             return avilable_cells[index];
         }
 

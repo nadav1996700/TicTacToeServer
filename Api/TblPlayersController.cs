@@ -37,7 +37,7 @@ namespace TicTacToeServer.Api
 
         //api/TblPlayers/{id}/{password}
         [HttpGet("{id}/{password}")]
-        public async Task<ActionResult<string>> GetPlayerId(string id, string password)
+        public async Task<ActionResult<TblPlayers>> GetPlayer(string id, string password)
         {
             var tblPlayers = await _context.TblPlayers.ToListAsync();
 
@@ -49,7 +49,7 @@ namespace TicTacToeServer.Api
             foreach(var player in tblPlayers)
             {
                 if (player.Id.Trim() == id && player.Password.Trim() == password)
-                    return player.FirstName.Trim() + " " + player.LastName.Trim();
+                    return player;
             }
             return NotFound();
         }

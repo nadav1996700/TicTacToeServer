@@ -12,5 +12,6 @@ namespace TicTacToeServer.Model
         public int NumberOfMove { get; set; }
         public int Row { get; set; }
         public int Column { get; set; }
+        public string PlayerOrServer { get; set; }
     }
 }
