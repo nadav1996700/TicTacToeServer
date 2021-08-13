@@ -29,21 +29,6 @@ namespace TicTacToeServer.Api
             return await _context.TblGames.ToListAsync();
         }
 
-        //// GET: api/TblGames/id
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<TblGames>> GetTblGames(int id)
-        //{
-        //    Console.WriteLine("1");
-        //    var tblGames = await _context.TblGames.FindAsync(id);
-
-        //    if (tblGames == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return tblGames;
-        //}
-
         // GET: api/TblGames/matrix
         [HttpGet("{matrix}")]
         public Move GetNextMove(string matrix)
@@ -67,12 +52,12 @@ namespace TicTacToeServer.Api
 
         // POST: api/TblGames
         [HttpPost]
-        public async Task<ActionResult<TblGames>> PostTblGames(TblGames tblGames)
+        public async Task<ActionResult<TblGames>> PostTblGames(TblGames game)
         {
-            _context.TblGames.Add(tblGames);
-            await _context.SaveChangesAsync();
+           _context.TblGames.Add(game);
+           await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetTblGames", new { id = tblGames.Id }, tblGames);
+           return CreatedAtAction("GetTblGames", new { id = game.Id }, game);          
         }
     }
 }
