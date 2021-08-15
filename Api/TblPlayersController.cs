@@ -25,14 +25,14 @@ namespace TicTacToeServer.Api
         [HttpGet("{id}")]
         public async Task<ActionResult<TblPlayers>> GetTblPlayers(int id)
         {
-            var tblPlayers = await _context.TblPlayers.FindAsync(id);
+            var player = await _context.TblPlayers.FindAsync(id);
 
-            if (tblPlayers == null)
+            if (player == null)
             {
                 return NotFound();
             }
 
-            return tblPlayers;
+            return player;
         }
 
         //api/TblPlayers/{id}/{password}
@@ -42,16 +42,13 @@ namespace TicTacToeServer.Api
             var tblPlayers = await _context.TblPlayers.ToListAsync();
 
             if (tblPlayers == null)
-            {
                 return NotFound();
-            }
 
-            foreach(var player in tblPlayers)
-            {
-                if (player.Id.Trim() == id && player.Password.Trim() == password)
-                    return player;
-            }
-            return NotFound();
+            var player = tblPlayers.Where(p => p.Id.Trim() == id && p.Password.Trim() == password).FirstOrDefault();
+            if (player != null) 
+                return player; 
+            else 
+                return NotFound();
         }
 
         // PUT: api/TblPlayers/5
@@ -85,8 +82,6 @@ namespace TicTacToeServer.Api
         }
 
         // POST: api/TblPlayers
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
         public async Task<ActionResult<TblPlayers>> PostTblPlayers(TblPlayers tblPlayers)
         {
