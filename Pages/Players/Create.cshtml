@@ -5,9 +5,8 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Registration</h1>
 
-<h4>TblPlayers</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -15,7 +14,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="TblPlayers.Id" class="control-label"></label>
-                <input asp-for="TblPlayers.Id" class="form-control" />
+                <input type="number" asp-for="TblPlayers.Id" class="form-control" />
                 <span asp-validation-for="TblPlayers.Id" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -47,7 +46,7 @@
                 <span asp-validation-for="TblPlayers.Gender" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Register" class="btn btn-primary" />
             </div>
         </form>
     </div>

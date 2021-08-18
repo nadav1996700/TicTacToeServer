@@ -18,7 +18,6 @@ namespace TicTacToeServer.Pages.Players
         {
             _context = context;
         }
-
         public IList<TblPlayers> TblPlayers { get;set; }
 
         public async Task OnGetAsync()
