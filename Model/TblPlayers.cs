@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Security.Cryptography;
+using TicTacToeServer.Data;
 
 namespace TicTacToeServer.Model
 {
@@ -17,7 +19,7 @@ namespace TicTacToeServer.Model
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "Id must be entered")]
-        [StringLength(9, MinimumLength = 9, ErrorMessage ="id must contain 9 digits")]
+        [StringLength(9, MinimumLength = 9, ErrorMessage = "id must contain 9 digits")]
         public string Id { get; set; }
 
         [Required(ErrorMessage = "please enter your age")]

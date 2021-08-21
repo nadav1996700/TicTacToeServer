@@ -32,6 +32,7 @@ namespace TicTacToeServer.Pages.QueriesList
             CountList = new List<int>();
             foreach(var player in TblPlayers)
             {
+                // count the number of games that the player played
                 int games = TblGames.Where(g => g.PlayerId == player.Id).Count();
                 CountList.Add(games);
             }

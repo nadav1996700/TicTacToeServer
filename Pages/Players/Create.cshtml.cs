@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using TicTacToeServer.Data;
 using TicTacToeServer.Model;
 
@@ -34,8 +31,15 @@ namespace TicTacToeServer.Pages.Players
                 return Page();
             }
 
-            _context.TblPlayers.Add(TblPlayers);
-            await _context.SaveChangesAsync();
+            try
+            {
+                _context.TblPlayers.Add(TblPlayers);
+                await _context.SaveChangesAsync();
+            } catch (Exception)
+            {
+                return Page();
+            }
+
             return RedirectToPage("./Index");
         }
     }
